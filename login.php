@@ -132,7 +132,7 @@
         $p = $_POST['pass'];
         $sql = "SELECT * FROM users WHERE username = '$u' AND password = '$p'";
         
-        // echo "<div class='sql-debug'><strong>SQL Query:</strong><br> $sql</div>";
+        echo "<div class='sql-debug'><strong>SQL Query:</strong><br> $sql</div>";
         
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result) > 0){
