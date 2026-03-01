@@ -91,7 +91,7 @@
         .footer-links a { color: #fff; text-decoration: none; opacity: 0.8; }
         .footer-links a:hover { opacity: 1; text-decoration: underline; }
 
-        /* Hiển thị câu lệnh SQL cho việc học tập
+        Hiển thị câu lệnh SQL cho việc học tập
         .sql-debug {
             margin-top: 20px;
             padding: 10px;
@@ -101,7 +101,7 @@
             font-size: 12px;
             border-radius: 5px;
             word-break: break-all;
-        } */
+        }
     </style>
 </head>
 <body>
@@ -132,7 +132,7 @@
         $p = $_POST['pass'];
         $sql = "SELECT * FROM users WHERE username = '$u' AND password = '$p'";
         
-        echo "<div class='sql-debug'><strong>SQL Query:</strong><br> $sql</div>";
+        // echo "<div class='sql-debug'><strong>SQL Query:</strong><br> $sql</div>";
         
         $result = mysqli_query($conn, $sql);
         if(mysqli_num_rows($result) > 0){
