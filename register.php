@@ -1,19 +1,22 @@
-<?php include 'config.php'; ?>
-<form method="POST">
-    <h2>Đăng ký tài khoản</h2>
-    User: <input type="text" name="user" required><br>
-    Pass: <input type="password" name="pass" required><br>
-    Name: <input type="text" name="name"><br>
-    <button type="submit" name="register">Đăng ký</button>
-</form>
+<div class="login-box">
+    <h2>Tạo tài khoản Lab</h2>
+    <form method="POST">
+        <div class="input-field"><label>Username</label><input type="text" name="u" required></div>
+        <div class="input-field"><label>Mật khẩu</label><input type="password" name="p" required></div>
+        <div class="input-field"><label>Họ tên</label><input type="text" name="n" required></div>
+        <div class="input-field"><label>Email</label><input type="email" name="e" required></div>
+        <div class="input-field"><label>Tuổi</label><input type="number" name="a" required></div>
+        <button type="submit" name="reg">Đăng ký ngay</button>
+    </form>
+</div>
 
 <?php
-if(isset($_POST['register'])){
-    $u = $_POST['user'];
-    $p = $_POST['pass'];
-    $n = $_POST['name'];
-    $sql = "INSERT INTO users (username, password, fullname) VALUES ('$u', '$p', '$n')";
-    if(mysqli_query($conn, $sql)) echo "Đăng ký thành công!";
-    else echo "Lỗi: " . mysqli_error($conn);
+if(isset($_POST['reg'])){
+    include 'config.php';
+    $u = $_POST['u']; $p = $_POST['p']; $n = $_POST['n']; $e = $_POST['e']; $a = $_POST['a'];
+    // Gán mặc định tiền cho user mới là 100$
+    $sql = "INSERT INTO users (username, password, fullname, email, age, totalMoney) 
+            VALUES ('$u', '$p', '$n', '$e', $a, 100.00)";
+    if(mysqli_query($conn, $sql)) header("Location: login.php");
 }
 ?>
