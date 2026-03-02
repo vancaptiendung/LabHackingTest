@@ -17,6 +17,7 @@ if(isset($_POST['reg'])){
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Register | Vantech Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>

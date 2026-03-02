@@ -17,6 +17,7 @@ if (isset($_SESSION['user_id'])) {
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Vantech Hacking Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>

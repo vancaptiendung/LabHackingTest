@@ -4,8 +4,10 @@ include 'config.php';
 
 if(isset($_POST['login'])){
     $u = $_POST['u']; $p = $_POST['p'];
-    $sql = "SELECT * FROM users WHERE username = '$u' AND password = '$p'";
-    $result = mysqli_query($conn, $sql);
+    $stmt = $conn->prepare("SELECT id, fullname, totalMoney FROM users WHERE username = ? AND password = ?");
+    $stmt->bind_pram("ss", $u, $s);
+    $stmt->execute();
+    $result = $stmt->get_result();
 
     if($row = mysqli_fetch_assoc($result)){
         $_SESSION['user_id'] = $row['id'];
@@ -19,6 +21,7 @@ if(isset($_POST['login'])){
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
     <title>Login | Vantech Lab</title>
     <link rel="stylesheet" href="style.css">
 </head>
