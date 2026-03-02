@@ -55,3 +55,86 @@ if (isset($_SESSION['user_id'])) {
     </main>
 </body>
 </html>
+
+<style>
+    .expert-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        gap: 20px;
+        max-width: 900px;
+        margin: 40px auto;
+        padding: 0 20px;
+    }
+
+    .expert-card {
+        padding: 25px;
+        text-align: center;
+        cursor: pointer;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .expert-card:hover {
+        background: rgba(14, 165, 233, 0.1);
+        border-color: var(--primary);
+        transform: translateY(-10px);
+        box-shadow: 0 10px 30px rgba(14, 165, 233, 0.2);
+    }
+
+    .expert-card .avatar {
+        width: 60px;
+        height: 60px;
+        background: var(--primary);
+        border-radius: 50%;
+        margin: 0 auto 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-weight: bold;
+        font-size: 1.2rem;
+        color: var(--bg);
+    }
+
+    .expert-name {
+        font-weight: 600;
+        font-size: 1.1rem;
+        margin-bottom: 5px;
+    }
+
+    .expert-role {
+        font-size: 0.8rem;
+        color: var(--text-muted);
+    }
+</style>
+
+<section style="margin-top: 50px;">
+    <h2 style="text-align: center; color: var(--text-muted); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px;">
+        Thành viên tiêu biểu
+    </h2>
+    
+    <div class="expert-grid">
+        <div class="glass-card expert-card" onclick="viewProfile('DavidVan')">
+            <div class="avatar">DV</div>
+            <div class="expert-name">DavidVan</div>
+            <div class="expert-role">Senior Security Analyst</div>
+        </div>
+
+        <div class="glass-card expert-card" onclick="viewProfile('YGUY')">
+            <div class="avatar">YG</div>
+            <div class="expert-name">YGUY</div>
+            <div class="expert-role">Pentester</div>
+        </div>
+
+        <div class="glass-card expert-card" onclick="viewProfile('T.Hùng')">
+            <div class="avatar">TH</div>
+            <div class="expert-name">T.Hùng</div>
+            <div class="expert-role">Web Developer</div>
+        </div>
+    </div>
+</section>
+
+<script>
+    function viewProfile(name) {
+        alert("Bạn đang chọn xem thông tin của: " + name + "\n(Tính năng này sẽ được liên kết với Database ở bài học tới)");
+    }
+</script>
