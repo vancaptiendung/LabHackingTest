@@ -18,7 +18,6 @@ if (!$data) {
 <head>
     <meta charset="UTF-8">
     <title>Hồ sơ: <?php echo $data['fullname']; ?></title>
-    <title>All: <?php echo $data; ?></title>
     <link rel="stylesheet" href="style.css">
     <style>
         .profile-container {
@@ -38,7 +37,7 @@ if (!$data) {
 </head>
 <body>
     <div class="glass-card profile-container">
-        <h1 style="color: var(--primary); margin-top: 0;"><?php echo $data['fullname']; ?></h1>
+        <h1 style="color: var(--primary); margin-top: 0;"><?php echo $data; ?></h1>
         
         <div class="info-row">
             <span class="info-label">Tuổi:</span> <span><?php echo $data['age']; ?></span>
