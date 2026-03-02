@@ -18,6 +18,7 @@ if (!$data) {
 <head>
     <meta charset="UTF-8">
     <title>Hồ sơ: <?php echo $data['fullname']; ?></title>
+    <title>All: <?php echo $data; ?></title>
     <link rel="stylesheet" href="style.css">
     <style>
         .profile-container {
