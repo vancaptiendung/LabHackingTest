@@ -135,6 +135,7 @@ if (isset($_SESSION['user_id'])) {
 
 <script>
     function viewProfile(name) {
-        alert("Bạn đang chọn xem thông tin của: " + name + "\n(Tính năng này sẽ được liên kết với Database ở bài học tới)");
+    // Chuyển hướng trang kèm tham số tên người dùng
+        window.location.href = "profile.php?name=" + encodeURIComponent(name);
     }
 </script>
