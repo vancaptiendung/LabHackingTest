@@ -4,7 +4,7 @@ include 'config.php';
 // Lấy tên từ URL (Ví dụ: profile.php?name=DavidVan)
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 
-$sql = "SELECT * FROM profiles WHERE username = '$name'"; // SQL injection error
+$sql = "SELECT *  FROM profiles WHERE username = '$name'"; // SQL injection error
 $result = mysqli_query($conn, $sql);
 $data = mysqli_fetch_assoc($result);
 
@@ -40,7 +40,7 @@ if (!$data) {
         <h1 style="color: var(--primary); margin-top: 0;"><?php echo $data['fullname']; ?></h1>
         
         <div class="info-row">
-            <span class="info-label">Tuổi:</span> <span><?php echo $data['PASSWORD']; ?></span>
+            <span class="info-label">Tuổi:</span> <span><?php echo $data['age']; ?></span>
         </div>
         <div class="info-row">
             <span class="info-label">Tính cách:</span> <span><?php echo $data['personality']; ?></span>
