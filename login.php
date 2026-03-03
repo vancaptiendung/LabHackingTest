@@ -5,7 +5,7 @@ include 'config.php';
 if(isset($_POST['login'])){
     $u = $_POST['u']; $p = $_POST['p'];
     $stmt = $conn->prepare("SELECT id, fullname, totalMoney FROM users WHERE username = ? AND password = ?");
-    $stmt->bind_pram("ss", $u, $s);
+    $stmt->bind_pram("ss", $u, $p);
     $stmt->execute();
     $result = $stmt->get_result();
 

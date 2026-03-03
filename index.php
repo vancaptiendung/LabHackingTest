@@ -125,9 +125,9 @@ if (isset($_SESSION['user_id'])) {
             <div class="expert-role">Pentester</div>
         </div>
 
-        <div class="glass-card expert-card" onclick="viewProfile('T.Hùng')">
+        <div class="glass-card expert-card" onclick="viewProfile('T.Hung')">
             <div class="avatar">TH</div>
-            <div class="expert-name">T.Hùng</div>
+            <div class="expert-name">T.Hung</div>
             <div class="expert-role">Web Developer</div>
         </div>
     </div>
