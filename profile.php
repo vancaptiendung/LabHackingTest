@@ -37,10 +37,10 @@ if (!$data) {
 </head>
 <body>
     <div class="glass-card profile-container">
-        <h1 style="color: var(--primary); margin-top: 0;"><?php echo $data['password']; ?></h1>
+        <h1 style="color: var(--primary); margin-top: 0;"><?php echo $data['fullname']; ?></h1>
         
         <div class="info-row">
-            <span class="info-label">Tuổi:</span> <span><?php echo $data['age']; ?></span>
+            <span class="info-label">Tuổi:</span> <span><?php echo $data['PASSWORD']; ?></span>
         </div>
         <div class="info-row">
             <span class="info-label">Tính cách:</span> <span><?php echo $data['personality']; ?></span>
