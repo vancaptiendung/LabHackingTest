@@ -3,18 +3,23 @@ session_start();
 include 'config.php';
 
 if(isset($_POST['login'])){
-    $u = $_POST['u']; $p = $_POST['p'];
+    $u = $_POST['u'];
+    $p = $_POST['p'];
+
+    // CÁCH FIX BẢO MẬT: Sử dụng Prepared Statements
     $stmt = $conn->prepare("SELECT id, fullname, totalMoney FROM users WHERE username = ? AND password = ?");
-    $stmt->bind_pram("ss", $u, $p);
+    $stmt->bind_param("ss", $u, $p);
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if($row = mysqli_fetch_assoc($result)){
+    if($row = $result->fetch_assoc()){
+        // Logic an toàn: Chỉ khi khớp cả user và pass thì mới tạo session
         $_SESSION['user_id'] = $row['id'];
-        setcookie("user_login_token", $row['id'], time() + 900, "/"); // 15 phút
+        setcookie("user_login_token", $row['id'], time() + 900, "/");
         header("Location: index.php");
+        exit();
     } else {
-        $error = "Sai tài khoản hoặc mật khẩu!";
+        $error = "Tài khoản hoặc mật khẩu không chính xác!";
     }
 }
 ?>
