@@ -5,7 +5,7 @@ include 'config.php';
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 
 $stmt = $conn->prepare("SELECT * FROM profile WHERE username = ?");
-$stmt->bind_param("ss", $u, $p);
+$stmt->bind_param("ss", $name);
 $stmt->execute();
 $result = $stmt->get_result();
 $data = $result->fetch_assoc();
