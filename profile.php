@@ -4,9 +4,11 @@ include 'config.php';
 // Lấy tên từ URL (Ví dụ: profile.php?name=DavidVan)
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 
-$sql = "SELECT *  FROM profiles WHERE username = '$name'"; // SQL injection error
-$result = mysqli_query($conn, $sql);
-$data = mysqli_fetch_assoc($result);
+$stmt = $conn->prepare("SELECT * FROM profile WHERE username = ? AND password = ?");
+$stmt->bind_param("ss", $u, $p);
+$stmt->execute();
+$result = $stmt->get_result();
+$data = $result->fetch_assoc();
 
 if (!$data) {
     die("<h2 style='color:white; text-align:center;'>Không tìm thấy thông tin thành viên này!</h2>");
