@@ -11,7 +11,7 @@ $result = $stmt->get_result();
 $data = $result->fetch_assoc();
 
 if (!$data) {
-    die("<h2 style='color:white; text-align:center;'>Không tìm thấy thông tin thành viên này!</h2>");
+    die("<h2 style='color:black; text-align:center;'>Không tìm thấy thông tin thành viên này!</h2>");
 }
 ?>
 
