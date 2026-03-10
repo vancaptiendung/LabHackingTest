@@ -7,4 +7,4 @@ Bug 1: Subverting application logic
 - fix: Prepared Statements
 
 Bug 2: UNION ATTACK:
-- link : [UnionAttack](https://github.com/vancaptiendung/LabHackingTest/attackType/UnionAttack.md)
+- link : [UnionAttack](https://github.com/vancaptiendung/LabHackingTest/blob/main/attackType/SQLinjection/UnionAttack.md)
