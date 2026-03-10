@@ -13,7 +13,7 @@ if(isset($_POST['reg'])){
         //                     VALUES ('$u', '$p', '$n', '$e', '$a', 100.00)");
         $stmt = $conn->prepare("INSERT INTO users (username, password, fullname, email, age, totalMoney) 
                             VALUES (?, ?, ?, ?, ?, 100.00)");
-        $stmt->bind_param("sssss", '$u', '$p', '$n', '$e', '$a');
+        $stmt->bind_param("sssss", "$u", "$p", "$n", "$e", "$a");
         $stmt->execute();
         
         header("Location: login.php");
