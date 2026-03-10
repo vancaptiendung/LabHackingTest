@@ -4,8 +4,10 @@ include 'config.php';
 // Lấy tên từ URL (Ví dụ: profile.php?name=DavidVan)
 $name = isset($_GET['name']) ? $_GET['name'] : '';
 
+$u = $u = $_POST['name'];
+
 $stmt = $conn->prepare("SELECT *  FROM profiles WHERE username = ?");
-$stmt->bind_param("ss", $name);
+$stmt->bind_param("ss", $u);
 $stmt->execute();
 $result = $stmt->get_result();
 $data = $result->fetch_assoc();
