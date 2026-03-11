@@ -2,10 +2,6 @@
 session_start();
 include 'config.php';
 
-<?php
-session_start();
-include 'config.php';
-
 // ... đoạn code kiểm tra username/password ...
 
 
