@@ -18,15 +18,7 @@ if(isset($_POST['login'])){
     if($row = $result->fetch_assoc()){
         // 1. Tạo Session để lưu trạng thái đăng nhập tạm thời
         $_SESSION['user_id'] = $row['id'];
-        $_SESSION['username'] = $row['username'];
-
-        // 2. Tạo Tracking Cookie (tồn tại trong 30 ngày)
-        // Cookie này lưu username để "nhận diện" người dùng khi họ quay lại
-        setcookie("user_tracking", $row['username'], time() + (86400 * 30), "/"); 
-        
-        // Tạo thêm một ID định danh duy nhất (UID) để tracking chuyên sâu
-        $uid = md5($row['username'] . time());
-        setcookie("track_id", $uid, time() + (86400 * 30), "/", "", false, true); // HttpOnly để bảo mật
+        setcookie("user_login_token", $row['id'], time() + 900, "/");
 
         header("Location: index.php");
         exit();
