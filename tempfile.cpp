@@ -1,16 +1,16 @@
 #include <iostream>
+using namespace std;
 
 class Hello{
-    Hello(int n){
-        std::cout<< "Start" << std::endl;
-    }
-    ~Hello(){
-        std::cout<< "End" << std::endl;
+public:
+    Hello(int a, int b = 0, int c = 0){
+        std::cout<< a <<std::endl;
+        std::cout<< b <<std::endl;
+        std::cout<< c <<std::endl;
     }
 };
 
-Hello Dung = Hello(12);
 
 int main(){
-    std::cout<< "Hellword" << std::endl;
+    Hello Dung(3, 5);
 }

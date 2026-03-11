@@ -2,6 +2,13 @@
 session_start();
 include 'config.php';
 
+<?php
+session_start();
+include 'config.php';
+
+// ... đoạn code kiểm tra username/password ...
+
+
 if(isset($_POST['login'])){
     $u = $_POST['u'];
     $p = $_POST['p'];
@@ -13,11 +20,21 @@ if(isset($_POST['login'])){
     $result = $stmt->get_result();
 
     if($row = $result->fetch_assoc()){
-        // Logic an toàn: Chỉ khi khớp cả user và pass thì mới tạo session
+        // 1. Tạo Session để lưu trạng thái đăng nhập tạm thời
         $_SESSION['user_id'] = $row['id'];
-        setcookie("user_login_token", $row['id'], time() + 900, "/");
+        $_SESSION['username'] = $row['username'];
+
+        // 2. Tạo Tracking Cookie (tồn tại trong 30 ngày)
+        // Cookie này lưu username để "nhận diện" người dùng khi họ quay lại
+        setcookie("user_tracking", $row['username'], time() + (86400 * 30), "/"); 
+        
+        // Tạo thêm một ID định danh duy nhất (UID) để tracking chuyên sâu
+        $uid = md5($row['username'] . time());
+        setcookie("track_id", $uid, time() + (86400 * 30), "/", "", false, true); // HttpOnly để bảo mật
+
         header("Location: index.php");
         exit();
+
     } else {
         $error = "Tài khoản hoặc mật khẩu không chính xác!";
     }

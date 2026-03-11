@@ -1,12 +1,16 @@
 <?php
 session_start();
 include 'config.php';
-
-// Khôi phục session từ Cookie nếu có (Token 15 phút)
-if (!isset($_SESSION['user_id']) && isset($_COOKIE['user_login_token'])) {
-    $_SESSION['user_id'] = $_COOKIE['user_login_token'];
+// Kiểm tra xem đã có Cookie tracking chưa
+$visitor_name = "Khách ẩn danh";
+if (isset($_COOKIE['user_tracking'])) {
+    $visitor_name = $_COOKIE['user_tracking'];
 }
 
+// Nếu người dùng đã đăng nhập thực sự qua Session
+if (isset($_SESSION['username'])) {
+    $visitor_name = $_SESSION['username'];
+}
 $user = null;
 if (isset($_SESSION['user_id'])) {
     $uid = $_SESSION['user_id'];
@@ -37,6 +41,14 @@ if (isset($_SESSION['user_id'])) {
                 <a href="login.php" class="btn btn-primary">Đăng nhập</a>
                 <a href="register.php" class="btn" style="color: white;">Đăng ký</a>
             <?php endif; ?>
+        </div>
+        <div class="glass-card" style="max-width: 900px; margin: 20px auto; padding: 15px; text-align: center; border-left: 4px solid var(--primary);">
+            <p style="margin: 0;">
+                📍 Trạng thái: <strong><?php echo htmlspecialchars($visitor_name); ?></strong> 
+                <?php if(isset($_COOKIE['track_id'])): ?>
+                    <span style="font-size: 0.7rem; color: var(--text-muted);"> | ID: <?php echo $_COOKIE['track_id']; ?></span>
+                <?php endif; ?>
+            </p>
         </div>
     </nav>
 
@@ -116,7 +128,7 @@ if (isset($_SESSION['user_id'])) {
         <div class="glass-card expert-card" onclick="viewProfile('DavidVan')">
             <div class="avatar">DV</div>
             <div class="expert-name">DavidVan</div>
-            <div class="expert-role">Senior Security Analyst</div>
+            <div class="expert-role">Senior Security Analyst</div>  
         </div>
 
         <div class="glass-card expert-card" onclick="viewProfile('YGUY')">
